@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gym Dashboard</title>
+    <style>
+        body { font-family: Arial; background-color: #f0f0f0; padding: 20px; }
+        h1 { color: #333; }
+        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        .card { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard</h1>
+
+    <div class="section">
+        <h2>Available Plans</h2>
+        {% for plan in plans %}
+            <div class="card">
+                <h3>{{ plan.name }} - ₹{{ plan.price }}</h3>
+                <p>Duration: {{ plan.duration }}</p>
+                <p>{{ plan.description }}</p>
+            </div>
+        {% empty %}
+            <p>No plans available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>Workout Sessions</h2>
+        {% for workout in workouts %}
+            <div class="card">
+                <h3>{{ workout.name }}</h3>
+                <p>Trainer: {{ workout.trainer }}</p>
+                <p>Time: {{ workout.time }} | Day: {{ workout.day }}</p>
+                <p>{{ workout.description }}</p>
+            </div>
+        {% empty %}
+            <p>No workout sessions scheduled.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

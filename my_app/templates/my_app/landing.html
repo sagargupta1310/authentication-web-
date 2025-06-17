@@ -1,0 +1,45 @@
+<!-- templates/my_app/landing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to FitLife Gym</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: url('/static/images/gym-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            margin: auto;
+            width: 60%;
+            border-radius: 15px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff5733;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #c70039;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🏋️ Welcome to FitLife Gym!</h1>
+        <p>You're now successfully logged in.</p>
+        <p>Explore plans, manage your workouts, or track progress!</p>
+        <a href="/dashboard/">Go to Dashboard</a>
+    </div>
+</body>
+</html>
