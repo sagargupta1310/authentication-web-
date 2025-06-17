@@ -130,3 +130,11 @@ def verify_otp(request):
             return render(request, "verify_otp.html", {"error": "Invalid OTP"})
 
     return render(request, "verify_otp.html")
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def dashboard_view(request):
+    return render(request, 'my_app/dashboard.html')
