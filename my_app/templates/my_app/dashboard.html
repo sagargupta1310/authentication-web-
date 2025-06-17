@@ -1,42 +1,103 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Gym Dashboard</title>
-    <style>
-        body { font-family: Arial; background-color: #f0f0f0; padding: 20px; }
-        h1 { color: #333; }
-        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
-        .card { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <h1>Welcome to Your Dashboard</h1>
+<div class="section">
+    <h2>Workout Sessions</h2>
+    {% for workout in workouts %}
+        <div class="card">
+            <h3>{{ workout.name }}</h3>
+            <p>Trainer: {{ workout.trainer }}</p>
+            <p>Time: {{ workout.time }} | Day: {{ workout.day }}</p>
+            <p>{{ workout.description }}</p>
+            {% if workout.image %}
+                <img src="{{ workout.image.url }}" alt="{{ workout.name }}" style="max-width: 100%; height: auto; margin-top: 10px;">
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No workout sessions scheduled.</p>
+    {% endfor %}
+</div>
+<div class="section">
+    <h2>Available Plans</h2>
+    {% for plan in plans %}
+        <div class="card">
+            <h3>{{ plan.name }} - ₹{{ plan.price }}</h3>
+            <p>Duration: {{ plan.duration }}</p>
+            <p>{{ plan.description }}</p>
+        </div>
+    {% empty %}
+        <p>No plans available.</p>
+    {% endfor %}
+</div>
 
-    <div class="section">
-        <h2>Available Plans</h2>
-        {% for plan in plans %}
-            <div class="card">
-                <h3>{{ plan.name }} - ₹{{ plan.price }}</h3>
-                <p>Duration: {{ plan.duration }}</p>
-                <p>{{ plan.description }}</p>
-            </div>
-        {% empty %}
-            <p>No plans available.</p>
-        {% endfor %}
-    </div>
 
-    <div class="section">
-        <h2>Workout Sessions</h2>
-        {% for workout in workouts %}
-            <div class="card">
-                <h3>{{ workout.name }}</h3>
-                <p>Trainer: {{ workout.trainer }}</p>
-                <p>Time: {{ workout.time }} | Day: {{ workout.day }}</p>
-                <p>{{ workout.description }}</p>
-            </div>
-        {% empty %}
-            <p>No workout sessions scheduled.</p>
-        {% endfor %}
-    </div>
-</body>
-</html>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #1f4037, #99f2c8);
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 30px;
+    }
+
+    .section {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 16px;
+        margin-bottom: 40px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .card {
+        border: none;
+        background: #f7f7f7;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 1rem;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    .card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 15px;
+        object-fit: cover;
+    }
+
+    .btn-success {
+        display: inline-block;
+        background: #28a745;
+        color: white;
+        padding: 10px 18px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: background 0.3s;
+        margin-top: 10px;
+    }
+
+    .btn-success:hover {
+        background: #218838;
+    }
+</style>

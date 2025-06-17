@@ -134,7 +134,21 @@ def verify_otp(request):
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from .models import Plan, Workout
 @login_required
+
 def dashboard_view(request):
-    return render(request, 'my_app/dashboard.html')
+    plans = Plan.objects.all()
+    workouts = Workout.objects.all()
+    return render(request, 'my_app/dashboard.html', {
+        'plans': plans,
+        'workouts': workouts
+    })
+
+def dashboard_view(request):
+    plans = Plan.objects.all()
+    workouts = Workout.objects.all()
+    return render(request, 'my_app/dashboard.html', {
+        'plans': plans,
+        'workouts': workouts
+    })
