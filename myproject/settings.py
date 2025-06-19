@@ -25,11 +25,16 @@ SECRET_KEY = 'django-insecure-*&*i004s1*x-u&h83qwsy!u5#f@gyv0u#k-dc#p0ysnt4#spk!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 AUTH_USER_MODEL = 'my_app.User'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 INSTALLED_APPS = [
@@ -52,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this after SecurityMiddleware
+    'django.middleware.security.SecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
