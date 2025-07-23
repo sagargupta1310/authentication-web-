@@ -1,13 +1,12 @@
 import requests
 from myproject import settings
+from django.core.mail import send_mail
 
-def send_otp(mobile, otp):
-    """
-    Send OTP via SMS using 2Factor.in API.
-    """
-    url = f"https://2factor.in/API/V1/{settings.SMS_API_KEY}/SMS/{mobile}/{otp}/OTP1"
-    headers = {'content-type': 'application/x-www-form-urlencoded'}
-
-    response = requests.get(url, headers=headers)
-    print("DEBUG:", response.content)
-    return response.ok
+def send_otp(email, otp):
+    subject = "Your OTP Code"
+    message = f"Your OTP code is: {otp}"
+    from_email = None  # Uses DEFAULT_FROM_EMAIL
+    recipient_list = [email]
+    send_mail(subject, message, from_email, recipient_list)
+    print(f"[EMAIL SENT] OTP {otp} sent to {email}")
+    return True

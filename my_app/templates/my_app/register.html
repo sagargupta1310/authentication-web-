@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - FitLife Gym</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .register-card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: auto;
+      margin-top: 10vh;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .btn-primary {
+      background-color: #0d6efd;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #084298;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-card">
+    <h4 class="mb-3 text-center">Register for FitLife Gym</h4>
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+      <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" required placeholder="e.g. user@example.com">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+    <div class="mt-3 text-center">
+      <a href="/auth/login/">Already have an account? Login</a>
+    </div>
+  </div>
+</body>
+</html> 

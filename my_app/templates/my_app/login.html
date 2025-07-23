@@ -43,13 +43,13 @@
     <div class="login-card text-center">
       <div class="gym-logo mb-3"><i class="fas fa-dumbbell"></i></div>
       <h4 class="login-header mb-3">Welcome to FitLife Gym</h4>
-      <p class="mb-4 text-muted">Login with your phone number to access your workouts</p>
+      <p class="mb-4 text-muted">Login with your email to access your workouts</p>
 
       <form method="POST">
         {% csrf_token %}
         <div class="mb-3 text-start">
-          <label for="phone" class="form-label">📱 Phone Number</label>
-          <input type="text" name="phone" class="form-control" id="phone" required placeholder="e.g. 9876543210">
+          <label for="email" class="form-label">📧 Email Address</label>
+          <input type="email" name="email" class="form-control" id="email" required placeholder="e.g. user@example.com">
         </div>
         <button type="submit" class="btn btn-primary w-100">Send OTP</button>
       </form>
